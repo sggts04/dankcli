@@ -26,6 +26,7 @@ $ python -m dankcli 'templates/yesbutno.jpg' 'Mom at 2am: Are you awake?\n\nMe:'
 turns this
 
 ![](https://i.imgur.com/nW3XPkF.jpg)
+
 to this
 
 ![](https://i.imgur.com/h6qgp9m.png)
@@ -37,6 +38,7 @@ $ python -m dankcli "mymemes/helpmeme.jpg" "When you make a meme generator but n
 turns this
 
 ![](https://i.imgur.com/6CDBFwF.jpg)
+
 to this
 
 ![](https://i.imgur.com/lSBUfNb.png)
