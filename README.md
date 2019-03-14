@@ -12,7 +12,7 @@ $ pip install dankcli
 ## Usage
 
 ```bash
-$ python -m dankcli 'path/to/image' 'Meme text you want to add'
+$ python -m dankcli "path/to/image" "Meme text you want to add"
 ```
 
 The text gets automatically wrapped according to width of image but you can also have intentional \n in your text.
@@ -22,7 +22,7 @@ The meme is saved in a new folder called 'dankcli-output' with a name 'meme%s.pn
 
 #### Example 1 (showing \n functionality)
 ```bash
-$ python -m dankcli 'templates/yesbutno.jpg' 'Mom at 2am: Are you awake?\n\nMe:'
+$ python -m dankcli "templates/yesbutno.jpg" "Mom at 2am: Are you awake?\n\nMe:"
 ```
 turns this
 
