@@ -40,7 +40,7 @@ if not os.path.exists(os.path.join(os.getcwd(), 'dankcli-output')):
     os.mkdir('dankcli-output')
 # Get index of new meme for saving
 try:
-    temp = max([int(i.split('.')[0][4:]) for i in os.listdir(os.path.join(os.getcwd(), 'dankcli-output'))])
+    temp = max([int(i.split('.')[0][4:]) for i in os.listdir(os.path.join(os.getcwd(), 'dankcli-output')) if i.startswith('meme')])
 except:
     temp = 0
 
