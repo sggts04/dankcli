@@ -24,8 +24,10 @@ The meme is saved in a new folder called 'dankcli-output' with a name 'meme%s.pn
 $ python -m dankcli 'templates/yesbutno.jpg' 'Mom at 2am: Are you awake?\n\nMe:'
 ```
 turns this
+
 ![](https://i.imgur.com/nW3XPkF.jpg)
 to this
+
 ![](https://i.imgur.com/h6qgp9m.png)
 
 #### Example 2 (showing auto textwrap)
@@ -33,7 +35,9 @@ to this
 $ python -m dankcli "mymemes/helpmeme.jpg" "When you make a meme generator but now you can't stop making memes"
 ```
 turns this
+
 ![](https://i.imgur.com/6CDBFwF.jpg)
 to this
+
 ![](https://i.imgur.com/lSBUfNb.png)
 
