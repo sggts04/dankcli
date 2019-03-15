@@ -16,7 +16,7 @@ $ python -m dankcli "path/to/image" "Meme text you want to add"
 ```
 
 The text gets automatically wrapped according to width of image but you can also have intentional \n in your text.
-The meme is saved in a new folder called 'dankcli-output' with a name 'meme%s.png'
+The meme is saved in a new folder called 'dankcli-output' with an indexed name.
 
 ## Example
 

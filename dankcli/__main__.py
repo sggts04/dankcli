@@ -17,23 +17,23 @@ is_jpeg = True if ("jpg" in args_img_lower or "jpeg" in args_img_lower) else Fal
 whiteColor = 'rgb(255, 255, 255)'
 blackColor = 'rgb(0, 0, 0)'
 img = Image.open(args.img)
-W, H = img.size
+Width, Height = img.size
 line = args.text.replace('\\n', '\n')
 font = ImageFont.truetype('fonts/arial.ttf', size=getFontSize(img))
 
 # Check if intentional line-breaks done
 if '\n' in line:
     # If yes, individually text wrap every line
-    lineslist = []
-    newlines = line.split('\n')
-    for newl in newlines:
-        lineslist.append(textWrap(newl, font, W))
-    lines = '\n'.join(lineslist)
+    linesList = []
+    intentionalNewLines = line.split('\n')
+    for intentionalNewLine in intentionalNewLines:
+        linesList.append(textWrap(intentionalNewLine, font, Width))
+    lines = '\n'.join(linesList)
 else:
     # If not, just text wrap on entire thing
-    lines = textWrap(line, font, W)
+    lines = textWrap(line, font, Width)
 
-img2 = Image.new("RGBA",( W, H + getWhiteSpaceHeight(lines, font) ),whiteColor)
+img2 = Image.new("RGBA",( Width, Height + getWhiteSpaceHeight(lines, font) ),whiteColor)
 img2.paste(img, (0, getWhiteSpaceHeight(lines, font)))
 draw = ImageDraw.Draw(img2)
 
