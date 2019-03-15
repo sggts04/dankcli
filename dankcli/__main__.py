@@ -11,6 +11,9 @@ parser.add_argument("text", help="text to put above image",
                     type=str)
 args = parser.parse_args()
 
+args_img_lower = args.img.lower()
+is_jpeg = True if ("jpg" in args_img_lower or "jpeg" in args_img_lower) else False
+
 whiteColor = 'rgb(255, 255, 255)'
 blackColor = 'rgb(0, 0, 0)'
 img = Image.open(args.img)
@@ -44,4 +47,8 @@ try:
 except:
     temp = 0
 
-img2.save(f'dankcli-output/meme{temp+1}.png')
+if is_jpeg:
+    rgb_im = img2.convert('RGB')
+    rgb_im.save(f'dankcli-output/meme{temp+1}.jpg')
+else:
+    img2.save(f'dankcli-output/meme{temp+1}.png')
