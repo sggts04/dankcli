@@ -9,7 +9,7 @@ def getFontSize(img):
 
 def getTopLeftCorner(draw, lines, font, img):
     # Align according to longest line
-    line = max(lines.split('\n'), key=len)
+    line = max(lines.split('\n'), key= lambda x: font.getsize(x)[0])
     w= draw.textsize(line, font=font)[0]
     W = img.size[0]
     # Center horizontally, top vertically

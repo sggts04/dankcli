@@ -2,10 +2,10 @@ from setuptools import setup
 
 def readme():
     with open('README.md') as f:
-        return f.read()
+        return f.read()[309:]
 
 setup(name='dankcli',
-      version='0.5.1',
+      version='0.5.2',
       description='CLI Meme Generator to automatically add whitespace and text to top',
       long_description=readme(),
       long_description_content_type='text/markdown',
