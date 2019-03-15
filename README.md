@@ -1,5 +1,6 @@
 # dankcli
-[![PyPI version](https://badge.fury.io/py/dankcli.svg)](https://badge.fury.io/py/dankcli)
+[![PyPI version](https://img.shields.io/pypi/v/dankcli.svg?label=PyPI)](https://pypi.org/project/dankcli/)
+[![Python Version](https://img.shields.io/badge/Python-3.6%2B-blue.svg)](https://www.python.org/downloads/)
 [![Downloads](https://pepy.tech/badge/dankcli)](https://pepy.tech/project/dankcli)
 
 dankcli is a CLI Meme Generator which automatically adds white space and text to the top of your image.
