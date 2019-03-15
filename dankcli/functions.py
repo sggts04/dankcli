@@ -42,4 +42,18 @@ def textWrap(text, font, max_width):
 def getWhiteSpaceHeight(lines, font):
     lineNos = len(lines.split('\n'))
     heightPerLine = font.getsize(lines.split('\n')[0])[1]
+    # + 20 for 10 padding each for both top and bottom
     return heightPerLine*lineNos + 20
+
+def getLastIndex():
+    if not os.path.exists(os.path.join(os.getcwd(), 'dankcli-output')):
+        os.mkdir('dankcli-output')
+        return 0
+
+    allMemes = os.listdir(os.path.join(os.getcwd(), 'dankcli-output'))
+    # I don't wanna split this list comprehension up please don't make me
+    allIndexes = [int(i.split('.')[0][4:]) for i in allMemes if i.startswith('meme')]
+    try:
+        return max(allIndexes)
+    except:
+        return 0

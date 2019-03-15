@@ -1,7 +1,8 @@
 from PIL import Image, ImageFont, ImageDraw
-from .functions import getFontSize, getTopLeftCorner, getWhiteSpaceHeight, textWrap
+from .functions import getFontSize, getTopLeftCorner, getWhiteSpaceHeight, textWrap, getLastIndex
 import os
 import argparse
+import sys
 
 # Parsing Arguments to get Image Path and Meme Text
 parser = argparse.ArgumentParser()
@@ -11,12 +12,20 @@ parser.add_argument("text", help="text to put above image",
                     type=str)
 args = parser.parse_args()
 
+# Checking for JPEG/JPG Image to make sure to later save them as RGB and not RGBA
 args_img_lower = args.img.lower()
 is_jpeg = True if ("jpg" in args_img_lower or "jpeg" in args_img_lower) else False
 
 whiteColor = 'rgb(255, 255, 255)'
 blackColor = 'rgb(0, 0, 0)'
-img = Image.open(args.img)
+
+# Check if specified image exists
+try:
+    img = Image.open(args.img)
+except Exception as e:
+    print("Specified image doesn't exist or can't be opened")
+    sys.exit(1)
+
 Width, Height = img.size
 line = args.text.replace('\\n', '\n')
 font = ImageFont.truetype('fonts/arial.ttf', size=getFontSize(img))
@@ -33,22 +42,20 @@ else:
     # If not, just text wrap on entire thing
     lines = textWrap(line, font, Width)
 
-img2 = Image.new("RGBA",( Width, Height + getWhiteSpaceHeight(lines, font) ),whiteColor)
-img2.paste(img, (0, getWhiteSpaceHeight(lines, font)))
-draw = ImageDraw.Draw(img2)
+imageWithWhiteSpace = Image.new("RGBA",( Width, Height + getWhiteSpaceHeight(lines, font) ),whiteColor)
+imageWithWhiteSpace.paste(img, (0, getWhiteSpaceHeight(lines, font)))
+draw = ImageDraw.Draw(imageWithWhiteSpace)
 
-draw.text(getTopLeftCorner(draw, lines, font, img2), lines, fill=blackColor, font=font, align="left")
+draw.text(getTopLeftCorner(draw, lines, font, imageWithWhiteSpace), lines, fill=blackColor, font=font, align="left")
 
-if not os.path.exists(os.path.join(os.getcwd(), 'dankcli-output')):
-    os.mkdir('dankcli-output')
 # Get index of new meme for saving
-try:
-    temp = max([int(i.split('.')[0][4:]) for i in os.listdir(os.path.join(os.getcwd(), 'dankcli-output')) if i.startswith('meme')])
-except:
-    temp = 0
+lastIndex = getLastIndex()
+newIndex = lastIndex + 1
 
 if is_jpeg:
-    rgb_im = img2.convert('RGB')
-    rgb_im.save(f'dankcli-output/meme{temp+1}.jpg')
+    rgbImage = imageWithWhiteSpace.convert('RGB')
+    rgbImage.save(f"dankcli-output/meme{newIndex}.jpg")
+    print("Saved as " + f"dankcli-output/meme{newIndex}.jpg")
 else:
-    img2.save(f'dankcli-output/meme{temp+1}.png')
+    imageWithWhiteSpace.save(f"dankcli-output/meme{newIndex}.png")
+    print("Saved as " + f"dankcli-output/meme{newIndex}.png")
