@@ -28,7 +28,8 @@ except Exception as e:
 
 Width, Height = img.size
 line = args.text.replace('\\n', '\n')
-font = ImageFont.truetype('fonts/arial.ttf', size=getFontSize(img))
+font_path = os.path.join(os.path.dirname(__file__), 'fonts/arial.ttf')
+font = ImageFont.truetype(font_path, size=getFontSize(img))
 
 # Check if intentional line-breaks done
 if '\n' in line:
