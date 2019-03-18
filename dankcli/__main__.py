@@ -16,29 +16,29 @@ args = parser.parse_args()
 args_img_lower = args.img.lower()
 is_jpeg = True if ("jpg" in args_img_lower or "jpeg" in args_img_lower) else False
 
-whiteColor = 'rgb(255, 255, 255)'
-blackColor = 'rgb(0, 0, 0)'
+whiteColor = "rgb(255, 255, 255)"
+blackColor = "rgb(0, 0, 0)"
 
 # Check if specified image exists
 try:
     img = Image.open(args.img)
 except Exception as e:
     print("Specified image doesn't exist or can't be opened")
-    sys.exit(1)
+    sys.exit(2)
 
 Width, Height = img.size
-line = args.text.replace('\\n', '\n')
-font_path = os.path.join(os.path.dirname(__file__), 'fonts/arial.ttf')
+line = args.text.replace("\\n", "\n")
+font_path = os.path.join(os.path.dirname(__file__), "fonts", "arial.ttf")
 font = ImageFont.truetype(font_path, size=getFontSize(img))
 
 # Check if intentional line-breaks done
-if '\n' in line:
+if "\n" in line:
     # If yes, individually text wrap every line
     linesList = []
-    intentionalNewLines = line.split('\n')
+    intentionalNewLines = line.split("\n")
     for intentionalNewLine in intentionalNewLines:
         linesList.append(textWrap(intentionalNewLine, font, Width))
-    lines = '\n'.join(linesList)
+    lines = "\n".join(linesList)
 else:
     # If not, just text wrap on entire thing
     lines = textWrap(line, font, Width)
@@ -54,7 +54,7 @@ lastIndex = getLastIndex()
 newIndex = lastIndex + 1
 
 if is_jpeg:
-    rgbImage = imageWithWhiteSpace.convert('RGB')
+    rgbImage = imageWithWhiteSpace.convert("RGB")
     rgbImage.save(f"dankcli-output/meme{newIndex}.jpg")
     print("Saved as " + f"dankcli-output/meme{newIndex}.jpg")
 else:

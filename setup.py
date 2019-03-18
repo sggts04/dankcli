@@ -5,7 +5,7 @@ def readme():
         return f.read()[309:]
 
 setup(name='dankcli',
-      version='0.5.2',
+      version='0.5.3',
       description='CLI Meme Generator to automatically add whitespace and text to top',
       long_description=readme(),
       long_description_content_type='text/markdown',
