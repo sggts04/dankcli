@@ -3,7 +3,7 @@
 [![Python Version](https://img.shields.io/badge/Python-3.6%2B-blue.svg)](https://www.python.org/downloads/)
 [![Downloads](https://pepy.tech/badge/dankcli)](https://pepy.tech/project/dankcli)
 
-dankcli is a CLI Meme Generator which automatically adds white space and text to the top of your image.
+dankcli is a CLI Image Captioning Tool or Meme Generator which automatically adds white space and text to the top of your image.
 
 ## Installation
 
@@ -18,7 +18,7 @@ $ python -m dankcli "path/to/image" "Meme text you want to add"
 ```
 
 The text gets automatically wrapped according to width of image but you can also have intentional \n in your text.
-The meme is saved in a new folder called 'dankcli-output' with an indexed name.
+The meme is saved in the current folder with the name as the current date and time.
 
 ## Example
 

@@ -1,7 +1,7 @@
 from PIL import Image, ImageFont, ImageDraw
 import math
 import os
-
+import datetime
 
 def getFontSize(img):
     imgSize = img.size
@@ -45,15 +45,6 @@ def getWhiteSpaceHeight(lines, font):
     # + 20 for 10 padding each for both top and bottom
     return heightPerLine*lineNos + 20
 
-def getLastIndex():
-    if not os.path.exists(os.path.join(os.getcwd(), 'dankcli-output')):
-        os.mkdir('dankcli-output')
-        return 0
-
-    allMemes = os.listdir(os.path.join(os.getcwd(), 'dankcli-output'))
-    # I don't wanna split this list comprehension up please don't make me
-    allIndexes = [int(i.split('.')[0][4:]) for i in allMemes if i.startswith('meme')]
-    try:
-        return max(allIndexes)
-    except:
-        return 0
+def getFileName():
+    currentDateTime = str(datetime.datetime.now()).replace(" ", "").replace("-", "").replace(":", "").replace(".", "")
+    return currentDateTime
