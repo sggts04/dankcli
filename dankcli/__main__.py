@@ -10,7 +10,7 @@ parser.add_argument("img", help="relative path to image",
                     type=str)
 parser.add_argument("text", help="text to put above image",
                     type=str)
-parser.add_argument("-f", "--filename", help="file name for final image",
+parser.add_argument("-f", "--filename", help="file name for final image without extension",
                     type=str)
 args = parser.parse_args()
 

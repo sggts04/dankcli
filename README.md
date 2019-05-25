@@ -14,11 +14,11 @@ $ pip install dankcli
 ## Usage
 
 ```bash
-$ python -m dankcli "path/to/image" "Meme text you want to add"
+$ python -m dankcli [-f "file_name_without_extension"] "path/to/image" "Meme text you want to add"
 ```
 
 The text gets automatically wrapped according to width of image but you can also have intentional \n in your text.
-The image is saved in the current folder with the name as the current date and time.
+The image is saved in the current folder with the name as the current date and time, the name can be changed with the optional `-f` or `--filename` argument, specifying a file name without the file extension. 
 
 ## Example
 
