@@ -18,7 +18,7 @@ $ python -m dankcli "path/to/image" "Meme text you want to add"
 ```
 
 The text gets automatically wrapped according to width of image but you can also have intentional \n in your text.
-The meme is saved in the current folder with the name as the current date and time.
+The image is saved in the current folder with the name as the current date and time.
 
 ## Example
 

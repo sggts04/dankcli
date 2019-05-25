@@ -10,13 +10,13 @@ parser.add_argument("img", help="relative path to image",
                     type=str)
 parser.add_argument("text", help="text to put above image",
                     type=str)
-# parser.add_argument("-f", "--filename", help="file name for final image", 
-#                    type=str)
+parser.add_argument("-f", "--filename", help="file name for final image",
+                    type=str)
 args = parser.parse_args()
 
 # Checking for JPEG/JPG Image to make sure to later save it as RGB and not RGBA
 args_img_lower = args.img.lower()
-is_jpeg = True if ("jpg" in args_img_lower or "jpeg" in args_img_lower) else False
+isJPEG = True if (".jpg" in args_img_lower or ".jpeg" in args_img_lower) else False
 
 whiteColor = "rgb(255, 255, 255)"
 blackColor = "rgb(0, 0, 0)"
@@ -52,9 +52,9 @@ draw = ImageDraw.Draw(imageWithWhiteSpace)
 draw.text(getTopLeftCorner(draw, lines, font, imageWithWhiteSpace), lines, fill=blackColor, font=font, align="left")
 
 # Get name of new image for saving
-newName = getFileName()
+newName = args.filename if args.filename else getFileName()
 
-if is_jpeg:
+if isJPEG:
     rgbImage = imageWithWhiteSpace.convert("RGB")
     rgbImage.save(f"{newName}.jpg")
     print("Saved as " + f"{newName}.jpg")
