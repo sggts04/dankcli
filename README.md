@@ -14,7 +14,7 @@ $ pip install dankcli
 ## Usage
 
 ```bash
-$ python -m dankcli [-f "file_name_without_extension"] "path/to/image" "Meme text you want to add"
+$ python -m dankcli "path/to/image" "Meme text you want to add" [-f "final_image_name_without_extension"]
 ```
 
 The text gets automatically wrapped according to width of image but you can also have intentional \n in your text.
