@@ -4,8 +4,14 @@ import os
 import datetime
 
 def getFontSize(img):
-    imgSize = img.size
-    return math.floor(imgSize[1]/13)
+    width, height = img.size[0], img.size[1]
+    tempSize = max(math.floor(height/13), 13)
+    if tempSize==13 or not height/1.6 >= width:
+        # Horizontal or Lower-Bound
+        return tempSize
+    else:
+        # Vertical
+        return math.floor(tempSize/1.5)
 
 def getTopLeftCorner(draw, lines, font, img):
     # Align according to longest line
