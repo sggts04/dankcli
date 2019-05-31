@@ -23,7 +23,8 @@ blackColor = "rgb(0, 0, 0)"
 
 # Check if specified image exists
 try:
-    img = Image.open(args.img)
+    img_path = os.path.expanduser(args.img)
+    img = Image.open(img_path)
 except Exception as e:
     print("Specified image doesn't exist or can't be opened")
     sys.exit(2)
