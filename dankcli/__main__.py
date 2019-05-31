@@ -53,7 +53,7 @@ draw = ImageDraw.Draw(imageWithWhiteSpace)
 draw.text(getTopLeftCorner(draw, lines, font, imageWithWhiteSpace), lines, fill=blackColor, font=font, align="left")
 
 # Get name of new image for saving
-newName = args.filename if args.filename else getFileName()
+newName = os.path.expanduser(args.filename) if args.filename else getFileName()
 
 if isJPEG:
     rgbImage = imageWithWhiteSpace.convert("RGB")
